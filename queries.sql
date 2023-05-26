@@ -19,7 +19,9 @@ SELECT * FROM animals WHERE weight_kg BETWEEN '10.4' AND '17.3';
 BEGIN;
 UPDATE animals
 SET species = 'unspecified';
+SELECT species from animals;
 ROLLBACK;
+SELECT species from animals;
 
 BEGIN;
 UPDATE animals
@@ -31,11 +33,14 @@ BEGIN;
 UPDATE animals
 ET species = 'pokemon'
 WHERE species IS NULL;
+SELECT * FROM animals;
 COMMIT;
+SELECT * FROM animals;
 
 BEGIN;
 DELETE FROM animals;
 ROLLBACK;
+SELECT * FROM animals;
 
 BEGIN;
 DELETE FROM animals
