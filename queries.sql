@@ -103,3 +103,59 @@ LEFT JOIN animals ON owners.id = animals.owner_id
 GROUP BY owners.full_name
 ORDER BY count DESC
 LIMIT 1;
+
+SELECT animals.name
+FROM animals
+INNER JOIN visits ON animals.id = visits.animal_id
+WHERE visits.vet_id = (SELECT id FROM vets WHERE name = 'William Tatcher')
+ORDER BY visits.visit_date DESC
+LIMIT 1;
+
+SELECT COUNT(DISTINCT animal_id)
+FROM visits
+WHERE vet_id = (SELECT id FROM vets WHERE name = 'Stephanie Mendez');
+
+SELECT v.name, s.name AS specialty
+FROM vets v
+LEFT JOIN specializations sp ON v.id = sp.vet_id
+LEFT JOIN species s ON sp.species_id = s.id;
+
+SELECT a.name
+FROM animals a
+INNER JOIN visits v ON a.id = v.animal_id
+WHERE v.vet_id = (SELECT id FROM vets WHERE name = 'Stephanie Mendez')
+AND v.visit_date BETWEEN '2020-04-01' AND '2020-08-30';
+
+SELECT animals.name, COUNT(*) AS visits
+FROM animals
+INNER JOIN visits ON animals.id = visits.animal_id
+GROUP BY animals.id
+ORDER BY visits DESC
+LIMIT 1;
+
+SELECT vets.name, MIN(visits.visit_date) AS first_visit
+FROM vets
+INNER JOIN visits visits ON vets.id = visits.vet_id
+WHERE vets.name = 'Maisy Smith'
+GROUP BY vets.name;
+
+SELECT animals.name, vets.name, visit_date
+FROM animals
+INNER JOIN visits ON animals.id = visits.animal_id
+INNER JOIN vets ON visits.vet_id = vets.id
+WHERE visit
+
+SELECT COUNT(*)
+FROM visits
+LEFT JOIN specializations s ON visits.vet_id = s.vet_id AND visits.animal_id = s.species_id
+WHERE s.vet_id IS NULL;
+
+SELECT a.species_id, s.name AS species_name, COUNT(*) AS num_visits
+FROM visits v
+INNER JOIN animals a ON v.animal_id = a.id
+INNER JOIN species s ON a.species_id = s.id
+INNER JOIN vets vt ON v.vet_id = vt.id
+WHERE vt.name = 'Maisy Smith'
+GROUP BY a.species_id, species_name
+ORDER BY num_visits DESC
+LIMIT 1;
