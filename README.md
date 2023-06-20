@@ -31,6 +31,9 @@
 
 - A relational database is created to initialize a data structure for a vet clinic, it contains a table consisting of animals' information, in which data is inserted and queried.
 
+  ![image](https://github.com/Ofarouq310/vet-clinic/assets/102612396/3259969b-735f-4835-8064-63ebacbbd02d)
+
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -88,8 +91,6 @@ Clone this repository to your desired folder:
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
-
-> Describe 1 - 3 features you will add to the project.
 
 - [ ] Modify and query more data in SQL.
 
